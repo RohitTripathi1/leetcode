@@ -5,14 +5,13 @@ import CodeMirror from "@uiw/react-codemirror";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { javascript } from "@codemirror/lang-javascript";
 import EditorFooter from './EditorFooter';
+import { Problem } from '@/mockProblems/problems';
 type PlaygroundProps = {
-    
+    problem :Problem;
 };
 
-const Playground:React.FC<PlaygroundProps> = () => {
-    const boilerPlate=`function twoSum(nums,target) {
-    //write your code here
-};`;
+const Playground:React.FC<PlaygroundProps> = ({problem}) => {
+  
     return (
         <div className='flex flex-col bg-dark-layer-1 relative overflow-x-hidden'>
     <PreferenceNavbar/>
@@ -20,7 +19,7 @@ const Playground:React.FC<PlaygroundProps> = () => {
     <Split className='h-[calc(100vh-94px)]' direction='vertical' sizes={[60, 40]} minSize={60}>
     <div className='w-full overflow-auto'>
     <CodeMirror
-						value={boilerPlate}
+						value={problem.starterCode}
 						theme={vscodeDark}
 						// onChange={onChange}
 						extensions={[javascript()]}
@@ -39,37 +38,23 @@ const Playground:React.FC<PlaygroundProps> = () => {
 					</div>
 
                     <div className='flex'>
-                        <div className='mr-2 items-start mt-2 text-white '>
-                            <div className='flex flex-wrap items-center gap-y-4'>
-
-                     <div className="font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap">
-                     Case 1
-
-                    </div>
-
-                            </div>
-                         </div>
-
-                         <div className='mr-2 items-start mt-2 text-white '>
-                            <div className='flex flex-wrap items-center gap-y-4'>
-
-                     <div className="font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap">
-                     Case 2
-
-                    </div>
-
-                            </div>
-                         </div>
-
-                         <div className='mr-2 items-start mt-2 text-white '>
-                            <div className='flex flex-wrap items-center gap-y-4'>
-
-                     <div className="font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap">
-                     Case 3
-
-                    </div>
-                            </div>
-                         </div>      
+                    {problem.examples.map((example, index) => (
+							<div
+								className='mr-2 items-start mt-2 '
+								key={example.id}
+								// onClick={() => setActiveTestCaseId(index)}
+							>
+								<div className='flex flex-wrap items-center gap-y-4'>
+									<div
+										className="font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap"
+									
+									
+									>
+										Case {index + 1}
+									</div>
+								</div>
+							</div>
+						))}
                     </div>
                     {/* start here */}
                     <div className='font-semibold my-4'>
