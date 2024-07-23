@@ -35,7 +35,7 @@ const AuthPage:React.FC<AuthPageProps> = () => {
         <div className='max-w-7xl mx-auto'>
         <Navbar />
         <div className='flex items-center justify-center h-[calc(100vh-5rem)] pointer-events-none select-none'>
-        <Image src='/hero.png' alt='Hero img' width={700} height={700} />
+        <img src='https://t4.ftcdn.net/jpg/05/50/95/87/360_F_550958748_OeGcRonEUNoVhd0wjd9zSEMhLFIGO9Bt.jpg' alt='Hero img' width={800} height={1000} />
 				</div>
                 {authModal.isOpen && <AuthModal />}
         </div>

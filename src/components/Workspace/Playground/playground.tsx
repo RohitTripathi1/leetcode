@@ -124,7 +124,9 @@ const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess, setSolved 
 						extensions={[javascript()]}
 						 style={{ fontSize: settings.fontSize }}
 					/>
+					
 				</div>
+			
 				<div className='w-full px-5 overflow-auto'>
 					{/* testcase heading */}
 					<div className='flex h-10 items-center space-x-6'>

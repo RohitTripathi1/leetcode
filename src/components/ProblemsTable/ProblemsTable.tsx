@@ -84,7 +84,9 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({ setLoadingProblems }) => 
 									<p className='text-gray-400'>Coming soon</p>
 								)}
 							</td>
+							
 						</tr>
+						
 					);
 				})}
 			</tbody>
@@ -110,7 +112,9 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({ setLoadingProblems }) => 
 							</div>
 						</div>
 					</div>
+					
 				</tfoot>
+				
 			)}
 		</>
 	);
@@ -158,4 +162,5 @@ function useGetSolvedProblems() {
 	}, [user]);
 
 	return solvedProblems;
+	
 }
